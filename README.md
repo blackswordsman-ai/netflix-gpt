@@ -4,6 +4,7 @@
 
 # Features
 -login&signup form
+-signup form
 -redirect to browse page
 
 -Browse (after authentication)

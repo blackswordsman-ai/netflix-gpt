@@ -1,18 +1,13 @@
-import React from 'react'
+import React from "react";
+import Body from "./components/Body";
 import './App.css'
 
-
 function App() {
-
-
   return (
     <>
-      
-      <div className='text-red-900 text-3xl'>Hello</div>
-   
+      <Body />
     </>
-   
-  )
+  );
 }
 
-export default App
+export default App;
