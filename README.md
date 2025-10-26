@@ -6,6 +6,13 @@
 -login&signup form
 -signup form
 -redirect to browse page
+-form validation
+-useRef hook
+-firebase hosting
+-deploy our app to production
+-create signup user account f
+-impliment sign in user api
+-created redux store with user slice
 
 -Browse (after authentication)
     -header main movie
