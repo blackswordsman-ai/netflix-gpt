@@ -1,5 +1,5 @@
 import React, { useState, useRef } from "react";
-import { useNavigate } from "react-router-dom";
+// import { useNavigate } from "react-router-dom";
 import { useDispatch } from "react-redux";
 import Header from "./Header";
 import { isValidaData } from "../utils/validate";
@@ -10,11 +10,13 @@ import {
 } from "firebase/auth";
 import { auth } from "../utils/firebase";
 import { addUser } from "../utils/userSlice";
+import {USER_AVATAR ,LOGO} from "../utils/constants";
+
 
 const Login = () => {
   const [isSignInForm, setIsSignInForm] = useState(true);
   const [errorMessage, setErrorMessage] = useState(null);
-  const navigate = useNavigate();
+  // const navigate = useNavigate();
   const dispatch = useDispatch();
   
   const name = useRef(null);
@@ -23,9 +25,9 @@ const Login = () => {
 
   const handleSubmit = () => {
     //validate form data
-    console.log(email.current.value);
-    console.log(password.current.value);
-    console.log(name.current?.value);
+    // console.log(email.current.value);
+    // console.log(password.current.value);
+    // console.log(name.current?.value);
 
     const message = isValidaData(
       isSignInForm ? "" : name.current?.value,
@@ -45,13 +47,14 @@ const Login = () => {
           const user = userCredential.user;
           updateProfile(user, {
             displayName: name.current.value,
-            photoURL: "https://avatars.githubusercontent.com/u/178938044?v=4"
+            photoURL: USER_AVATAR,
+            
           }).then(() => {
             // Profile updated!
             const { uid, email, displayName, photoURL } = user;
             dispatch(addUser({ uid, email, displayName, photoURL }));
-            navigate('/browse');
-            console.log(user);
+            // navigate('/browse');
+            // console.log(user);
           }).catch((error) => {
             // An error occurred
             setErrorMessage(error.message);
@@ -73,8 +76,8 @@ const Login = () => {
           const user = userCredential.user;
           const { uid, email, displayName, photoURL } = user;
           dispatch(addUser({ uid, email, displayName, photoURL }));
-          navigate('/browse');
-          console.log(user);
+          // navigate('/browse');
+          // console.log(user);
 
           // ...
         })
@@ -94,8 +97,8 @@ const Login = () => {
       <Header />
       <div className="absolute">
         <img
-          src="https://assets.nflxext.com/ffe/siteui/vlv3/9ba9f0e2-b246-47f4-bd1f-3e84c23a5db8/web/IN-en-20251020-TRIFECTA-perspective_d6da84e9-6145-4b1e-bb51-e402c966a045_small.jpg"
-          alt="image"
+          src={LOGO}
+          alt="netflix-logo"
         />
       </div>
       <form
